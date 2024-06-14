@@ -17,6 +17,9 @@ export default defineConfig({
       "@features": `${currentWorkingDirectory}/src/components/features`,
       "@data": `${currentWorkingDirectory}/src/data`,
       "@styles": `${currentWorkingDirectory}/src/styles`,
+      "@hooks": `${currentWorkingDirectory}/src/hooks`,
+      "@provider": `${currentWorkingDirectory}/src/provider`,
+      "@context": `${currentWorkingDirectory}/src/context`,
     },
   },
 });
