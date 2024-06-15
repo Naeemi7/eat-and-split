@@ -1,6 +1,8 @@
 import Button from "@common/Button";
+import UseSplitContext from "@hooks/UseSplitContext";
 
-const Friend = ({ friend, onSelection, selectedFriend }) => {
+const Friend = ({ friend }) => {
+  const { selectedFriend, handleSelection } = UseSplitContext();
   const isSelected = selectedFriend?.id === friend.id;
 
   return (
@@ -19,7 +21,7 @@ const Friend = ({ friend, onSelection, selectedFriend }) => {
       )}
       {friend.balance === 0 && <p>You and {friend.name} are even</p>}
 
-      <Button onClick={() => onSelection(friend)}>
+      <Button onClick={() => handleSelection(friend)}>
         {isSelected ? "Close" : "Select"}
       </Button>
     </li>

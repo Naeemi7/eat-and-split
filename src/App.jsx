@@ -4,11 +4,12 @@ import FriendsList from "@features/FriendsList";
 import FormAddFriend from "@features/FormAddFriend";
 import Button from "@common/Button";
 import FormSplitBill from "@features/FormSplitBill";
+import UseSplitContext from "@hooks/UseSplitContext";
 
 export default function App() {
   const [showAddFriend, setShowAddFriend] = useState(false);
   const [friends, setFriends] = useState(initialFriends);
-  const [selectedFriend, setSelectFriend] = useState(null);
+  const { selectedFriend, setSelectedFriend } = UseSplitContext();
 
   const handleShowAddFriend = () => {
     setShowAddFriend((show) => !show);
@@ -21,14 +22,6 @@ export default function App() {
     setShowAddFriend(false);
   };
 
-  const handleSelection = (friend) => {
-    // setSelectFriend(friend);
-
-    setSelectFriend((cur) => (cur?.id === friend.id ? null : friend));
-
-    setShowAddFriend(false);
-  };
-
   const handleSplitBill = (value) => {
     setFriends((friends) =>
       friends.map((friend) =>
@@ -38,17 +31,13 @@ export default function App() {
       )
     );
 
-    setSelectFriend(null);
+    setSelectedFriend(null);
   };
 
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendsList
-          friends={friends}
-          onSelection={handleSelection}
-          selectedFriend={selectedFriend}
-        />
+        <FriendsList friends={friends} />
 
         {showAddFriend && <FormAddFriend onAddFriend={handleAddFriend} />}
 
