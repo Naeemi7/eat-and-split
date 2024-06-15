@@ -1,5 +1,4 @@
 import { useState } from "react";
-import initialFriends from "@data/initialFriends";
 import SplitContext from "@context/splitContext";
 
 export default function SplitProvider({ children }) {
